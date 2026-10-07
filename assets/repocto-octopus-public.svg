@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-labelledby="t d">
+<title id="t">RepOcto ahtapot karakteri</title><desc id="d">Sekiz kollu, mor ve mercan tonlarında stilize ahtapot.</desc>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9b6eb4"/><stop offset="1" stop-color="#df736c"/></linearGradient></defs>
+<g fill="none" stroke="url(#g)" stroke-width="30" stroke-linecap="round">
+<path d="M170 235C105 245 79 285 45 318"/><path d="M179 254C131 294 121 340 95 375"/><path d="M195 265C166 318 169 359 157 397"/><path d="M225 265C254 318 251 359 263 397"/>
+<path d="M241 254C289 294 299 340 325 375"/><path d="M250 235C315 245 341 285 375 318"/><path d="M164 213C100 203 71 176 42 149"/><path d="M256 213C320 203 349 176 378 149"/></g>
+<ellipse cx="210" cy="185" rx="100" ry="115" fill="url(#g)"/><ellipse cx="176" cy="176" rx="17" ry="22" fill="#fffaf1"/><ellipse cx="244" cy="176" rx="17" ry="22" fill="#fffaf1"/>
+<circle cx="181" cy="180" r="7" fill="#24142f"/><circle cx="249" cy="180" r="7" fill="#24142f"/><path d="M170 220Q210 250 250 220" fill="none" stroke="#fffaf1" stroke-width="10" stroke-linecap="round"/>
+</svg>
