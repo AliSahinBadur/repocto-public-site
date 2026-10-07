@@ -47,6 +47,7 @@ html:not(.js-ready) .reveal { opacity: 1; transform: none; }
 }
 .error-page { display: grid; min-height: 100svh; place-items: center; padding: 32px; }
 .error-panel { max-width: 640px; padding: 40px; background: #fffaf1; border-radius: 16px; }
+.error-panel .eyebrow { color: #70438d; }
 @media (max-width: 680px) {
   .showcase-badge { max-width: 100%; font-size: 12px; }
   .motion-toggle { right: 16px; top: auto; bottom: 12px; }

@@ -1,6 +1,7 @@
 # Doğrulama · 7 Ekim 2026
 
-Sonuç: **23 kontrol geçti.** Edge 154.0.4258.24 ile yerel dosya açılışı ve
+Sonuç: **30 kontrol geçti.** İlk hazırlıktaki 23 kontrol, yayın öncesi temizlik
+sonrasında yeniden çalıştırıldı; 7 ek kontrol geçti. Edge 154.0.4258.24 ile yerel dosya açılışı ve
 yalnız bu klasörü sunan geçici, izole statik test ortamı kullanıldı.
 Gerçek uygulama başlatılmadı; şirket belgesi veya model kullanılmadı.
 
@@ -26,6 +27,20 @@ Gerçek uygulama başlatılmadı; şirket belgesi veya model kullanılmadı.
 | Medya | Üç yerel video oynadı; durdur/oynat denetlendi. Hareket azaltmada posterler korundu. |
 | JavaScript kapalı | Tanıtım metinleri görünür; etkileşimli demo için açıklama gösteriliyor. |
 | Türkçe ve çalışma zamanı | Bozuk karakter örüntüsü, betik hatası veya normal kullanım konsol hatası bulunmadı. |
+| Adlandırma | Ziyaretçi HTML/CSS/JS ve medya adları RepOcto ile tutarlı; eski ürün adı kalmadı. |
+| Arama motorları | İki HTML sayfasındaki robots meta etiketi ve dağıtım `noindex, nofollow` başlığı kontrol edildi. |
+| Ek başlıklar | COOP/CORP `same-origin` ve arama motoru yönergesi yerel HTTP yanıtında doğrulandı. |
+| Derin 404 | Kökten eksik adres, `/a/b/c` ve `/a/b/c/` gerçek 404 döndürdü; stil, kaynaklar ve ana sayfaya dönüş JavaScript kapalıyken çalıştı. |
+| Üç WebP dönüşümü | Her dosya için çözünürlük ve açılmış RGBA piksel tamponu eski PNG ile birebir eşit. |
+
+## İnceleme sonrası kararlar
+
+- Büyük hafıza görseli 5,114,549 → 2,404,642 bayt; %52.98 küçüldü.
+- Üç PNG dönüşümü toplam 3,754,874 bayt tasarruf sağladı. Logo PNG olarak kaldı.
+- Eski PNG'ler güncel dağıtım kümesinden çıkarıldı; ilk commit'te korunuyor.
+- Canlı site performans puanı, garantili güvenlik puanı veya tamamlanma yüzdesi atanmadı.
+- Depo public kalır; `noindex` erişim kontrolü değildir.
+- Alan adı/HTTPS kararı olmadan HSTS, canonical veya yayın lisansı eklenmedi.
 
 SVG dosyası ve SVG oluşturan betikteki W3C ad alanı bir ağ bağımlılığı değildir.
 README'deki resmî doküman bağlantıları yalnız dağıtım rehberidir.
@@ -40,5 +55,6 @@ barındırma ayarları ve olası hosting kaynaklı betik eklemeleri yayın sonra
 ayrıca denetlenmelidir. Kurumun marka ve yayın onayı teknik kontrolden ayrıdır.
 
 Üretim uygulaması, veri tabanı, modeller ve Git geçmişi taşınmadı.
-Ana uygulamaya yeni dosya veya bağlantı eklenmedi. Bu doğrulama GitHub'a yükleme
-öncesinde yapıldı; Cloudflare yayını bu testin kapsamı dışında kaldı.
+Ana uygulamaya yeni dosya veya bağlantı eklenmedi. Bu doğrulama temizlik
+güncellemesinin GitHub'a yüklenmesinden önce yapıldı; Cloudflare yayını bu
+testin kapsamı dışında kaldı.
