@@ -1,6 +1,6 @@
 (() => {
-  // All records below are fictional; no file access or scanning takes place.
-  const wordmarkUrl = "assets/repocto-wordmark.png";
+  const scriptUrl = document.currentScript?.src || document.baseURI;
+  const wordmarkUrl = new URL("../assets/repocto-wordmark.png", scriptUrl).href;
   const documents = [
     {
       id: "alfa-dur-01",
@@ -9,12 +9,12 @@
       work: "ALFA",
       topic: "Dayanım",
       year: "2025",
-      person: "Örnek Uzman A",
+      person: "Uzman A",
       type: "PDF",
       confidence: 96,
-      path: "Kurgusal arşiv · Tanıtım kaydı",
+      path: "ÖRNEK ARŞİV\\ALFA\\2025-ALFA-DUR-01\\2025-ALFA-DUR-01.pdf",
       reason: "Kapak kodu, statik analiz başlığı ve dayanım sonuçları aynı sınıfı destekliyor.",
-      evidence: ["Dosya adı: ALFA + DUR", "Kapak alanı: Hazırlayan - Örnek Uzman A", "Başlıklar: Statik Analiz, Sonuçlar"]
+      evidence: ["Dosya adı: ALFA + DUR", "Kapak alanı: Hazırlayan - Uzman A", "Başlıklar: Statik Analiz, Sonuçlar"]
     },
     {
       id: "alfa-test-13",
@@ -23,12 +23,12 @@
       work: "ALFA",
       topic: "Konfor",
       year: "2025",
-      person: "Örnek Uzman B",
+      person: "Uzman B",
       type: "PDF",
       confidence: 93,
-      path: "Kurgusal arşiv · Tanıtım kaydı",
+      path: "ÖRNEK ARŞİV\\ALFA\\2025-ALFA-TEST-13\\2025-ALFA-TEST-13.pdf",
       reason: "Parkur adları, ivme ölçümleri ve sürüş konforu ifadeleri birlikte değerlendirildi.",
-      evidence: ["Dosya adı: ALFA + TEST", "Kapak alanı: Hazırlayan - Örnek Uzman B", "İçerik: parkur, ivme, konfor"]
+      evidence: ["Dosya adı: ALFA + TEST", "Kapak alanı: Hazırlayan - Uzman B", "İçerik: parkur, ivme, konfor"]
     },
     {
       id: "alfa-therm-03",
@@ -37,12 +37,12 @@
       work: "ALFA",
       topic: "Termal",
       year: "2023",
-      person: "Örnek Uzman C",
+      person: "Uzman C",
       type: "DOCX",
       confidence: 91,
-      path: "Kurgusal arşiv · Tanıtım kaydı",
+      path: "ÖRNEK ARŞİV\\ALFA\\TERMAL\\2023-ALFA-THERM-03.docx",
       reason: "Sıcaklık, inverter ve termal limit ifadeleri konu kümesiyle güçlü biçimde eşleşiyor.",
-      evidence: ["Belge özelliği: Yazar - Örnek Uzman C", "Başlık: Termal Analiz", "İçerik: °C, sıcaklık limiti"]
+      evidence: ["Belge özelliği: Yazar - Uzman C", "Başlık: Termal Analiz", "İçerik: °C, sıcaklık limiti"]
     },
     {
       id: "beta-dur-04",
@@ -51,12 +51,12 @@
       work: "BETA",
       topic: "Dayanım",
       year: "2024",
-      person: "Örnek Uzman A",
+      person: "Uzman A",
       type: "PPTX",
       confidence: 89,
-      path: "Kurgusal arşiv · Tanıtım kaydı",
+      path: "ÖRNEK ARŞİV\\BETA\\DAYANIM\\2024-BETA-DUR-04.pptx",
       reason: "Tutma kolu, yük, deformasyon ve emniyet katsayısı kavramları dayanım dalını işaret ediyor.",
-      evidence: ["Dosya adı: BETA + DUR", "Sunum yazarı: Örnek Uzman A", "İçerik: yük, deformasyon, FOS"]
+      evidence: ["Dosya adı: BETA + DUR", "Sunum yazarı: Uzman A", "İçerik: yük, deformasyon, FOS"]
     },
     {
       id: "gama-nvh-02",
@@ -65,12 +65,12 @@
       work: "GAMA",
       topic: "NVH",
       year: "2026",
-      person: "Örnek Uzman D",
+      person: "Uzman D",
       type: "PDF",
       confidence: 95,
-      path: "Kurgusal arşiv · Tanıtım kaydı",
+      path: "ÖRNEK ARŞİV\\GAMA\\NVH\\2026-GAMA-NVH-02.pdf",
       reason: "dB(A), titreşim, frekans ve yol testi sinyalleri NVH taksonomisiyle eşleşiyor.",
-      evidence: ["Kapak kodu: GAMA + NVH", "Hazırlayan: Örnek Uzman D", "İçerik: dB(A), Hz, titreşim"]
+      evidence: ["Kapak kodu: GAMA + NVH", "Hazırlayan: Uzman D", "İçerik: dB(A), Hz, titreşim"]
     },
     {
       id: "delta-weight",
@@ -82,7 +82,7 @@
       person: "Belgede bulunamadı",
       type: "DOCX",
       confidence: 68,
-      path: "Kurgusal arşiv · Tanıtım kaydı",
+      path: "ÖRNEK ARŞİV\\DELTA\\HESAPLAR\\DELTA_Ağırlıkdağılımı_Dokümanı.docx",
       reason: "Konu içerikten çıkarıldı; kişi bilgisi belge özelliklerinde ve kapakta bulunamadı.",
       evidence: ["Dosya adı: DELTA + Ağırlık dağılımı", "İçerik: aks yükü, tekerlek kuvveti", "Eksik alan: Hazırlayan"]
     }
@@ -114,13 +114,12 @@
             <span class="mx-brand-copy"><strong>RepOcto</strong><span>Kurumsal Hafıza</span></span>
           </div>
           <div class="mx-path-control">
-            <label for="memory-demo-path">Örnek arşiv</label>
-            <input id="memory-demo-path" type="text" value="Kurgusal mühendislik arşivi" aria-label="Kurgusal arşiv adı" readonly>
-            <button type="button" class="mx-button mx-button-primary" data-memory-scan>Demoyu oynat</button>
+            <label>Örnek klasör</label>
+            <input type="text" value="ÖRNEK ARŞİV" aria-label="Demo klasör adı; gerçek dosya okunmaz" data-memory-path>
+            <button type="button" class="mx-button mx-button-primary" data-memory-scan>Tara</button>
           </div>
         </header>
 
-        <p class="demo-notice mx-demo-notice">Yalnızca tanıtım: 6 kurgusal kayıt. Dosya taranmaz; kişiler, ilişkiler ve güven puanları örnektir.</p>
         <div class="mx-pipeline" aria-label="Otomatik işleme adımları">
           <div class="mx-stage"><b class="mx-stage-number">01</b><span><strong>Alt klasörler</strong><span>Özyinelemeli tarama</span></span></div>
           <div class="mx-stage"><b class="mx-stage-number">02</b><span><strong>Metin + OCR</strong><span>İçerik çıkarımı</span></span></div>
@@ -165,11 +164,11 @@
           </section>
 
           <aside class="mx-pane mx-detail-pane" aria-label="Seçili belge ayrıntıları">
-            <div class="mx-pane-header"><strong>Belge profili</strong><span>Kurgusal örnek</span></div>
+            <div class="mx-pane-header"><strong>Belge profili</strong><span>Kurgusal demo verisi</span></div>
             <div class="mx-detail-body" data-memory-detail></div>
           </aside>
         </div>
-        <div class="mx-status" role="status" aria-live="polite" data-memory-status>Demo hazır: 6 kurgusal belge ve 4 örnek çalışma.</div>
+        <div class="mx-status" role="status" aria-live="polite" data-memory-status>Demo hazır: 6 kurgusal belge ve 4 çalışma. Gerçek dosya okunmaz.</div>
       </section>`;
   }
 
@@ -346,7 +345,7 @@
           <div class="mx-reason-title">Neden bu kategoride?</div>
           <p class="mx-reason">${escapeHtml(item.reason)}</p>
           <div class="mx-divider"></div>
-          <div class="mx-reason-title">Kurgusal kaynak izleri</div>
+          <div class="mx-reason-title">Kaynak izleri</div>
           <ul class="mx-evidence-list">${item.evidence.map((text) => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
           ${low ? '<div class="mx-warning">Düşük güven: sınıflandırma korundu, belirsizlik görünür bırakıldı.</div>' : ""}
         </div>`;
@@ -397,8 +396,7 @@
       const documentTarget = event.target.closest("[data-doc-id]");
       if (!documentTarget || (event.key !== "Enter" && event.key !== " ")) return;
       event.preventDefault();
-      // SVG nodes do not implement HTMLElement.click().
-      documentTarget.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      documentTarget.click();
     });
 
     filters.forEach((select) => {
@@ -419,22 +417,18 @@
 
     root.querySelector("[data-memory-scan]").addEventListener("click", (event) => {
       const button = event.currentTarget;
+      const path = root.querySelector("[data-memory-path]").value.trim() || "Seçilen klasör";
       button.disabled = true;
-      button.textContent = "Demo oynatılıyor…";
-      status.textContent = "Kurgusal arşiv için örnek işlem adımları gösteriliyor; gerçek dosya okunmuyor.";
-      const stages = [...root.querySelectorAll(".mx-stage")];
-      stages.forEach((stage, index) => {
-        window.setTimeout(() => {
-          stages.forEach((item) => item.classList.remove("is-demo-active"));
-          stage.classList.add("is-demo-active");
-        }, index * 180);
-      });
+      button.textContent = "Taranıyor...";
+      status.textContent = `${path}: örnek tarama animasyonu oynatılıyor; gerçek dosya okunmuyor.`;
       window.setTimeout(() => {
-        stages.forEach((stage) => stage.classList.remove("is-demo-active"));
-        button.disabled = false;
-        button.textContent = "Demoyu yeniden oynat";
-        status.textContent = "Demo tamamlandı: 6 kurgusal belge, 4 çalışma. Hiçbir dosya okunmadı veya gönderilmedi.";
-      }, 1100);
+        button.textContent = "Tamamlandı";
+        status.textContent = `Demo tamamlandı: ${documents.length} kurgusal belge, ${unique("work").length} çalışma ve ${unique("person").length} kişi gösteriliyor.`;
+        window.setTimeout(() => {
+          button.disabled = false;
+          button.textContent = "Tara";
+        }, 1100);
+      }, 800);
     });
 
     renderAll();

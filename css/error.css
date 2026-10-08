@@ -1,0 +1,4 @@
+/* Existing 404 panel rules; separate from the unchanged V2 stylesheet. */
+.error-page { display: grid; min-height: 100svh; place-items: center; padding: 32px; }
+.error-panel { max-width: 640px; padding: 40px; background: #fffaf1; border-radius: 16px; }
+.error-panel .eyebrow { color: #70438d; }
